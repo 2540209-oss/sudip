@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Smart Planner</title>
+    <!-- FullCalendar CSS -->
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet' />
+    <!-- Your Custom CSS -->
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="logo">📅 Smart Planner</div>
+            <ul class="nav-links">
+                <li><a href="#" class="active" onclick="showSection('dashboard')"><i class="fas fa-calendar-alt"></i> Dashboard</a></li>
+                <li><a href="#" onclick="showSection('calendar')"><i class="fas fa-calendar-check"></i> Calendar</a></li>
+                <li><a href="#" onclick="showSection('settings')"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+            <div class="dark-mode-toggle" onclick="toggleDarkMode()">
+                <i class="fas fa-moon"></i>
+                <span>Dark Mode</span>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <section class="task-section" id="dashboardSection">
+                <header class="header">
+                    <h1>Smart Planner & Rescheduler</h1>
+                    <div class="filters">
+                        <button class="filter-btn active" onclick="filterTasks('all')">All</button>
+                        <button class="filter-btn" onclick="filterTasks('pending')">Pending</button>
+                        <button class="filter-btn" onclick="filterTasks('completed')">Completed</button>
+                        <button class="filter-btn" onclick="filterTasks('upcoming')">Upcoming</button>
+                    </div>
+                </header>
+
+                <!-- Task Form -->
+                <section class="task-form">
+                    <h2>Add New Task</h2>
+                    <form id="taskForm">
+                        <input type="text" id="taskTitle" placeholder="Task title" required>
+                        <input type="date" id="taskDate" required>
+                        <input type="time" id="taskTime" required>
+                        <textarea id="taskDescription" placeholder="Task description (optional)"></textarea>
+                        <div class="form-actions">
+                            <button type="submit">Add Task</button>
+                            <button type="button" onclick="clearForm()">Clear</button>
+                        </div>
+                    </form>
+                </section>
+
+                <!-- Task List -->
+                <section class="task-list">
+                    <h2>Task List</h2>
+                    <div class="task-cards" id="taskCards"></div>
+                </section>
+            </section>
+
+            <!-- Calendar Section -->
+            <section class="calendar-view" id="calendarView">
+                <h2>Calendar View</h2>
+                <div id="calendar"></div>
+            </section>
+
+            <!-- Settings Section -->
+            <section class="settings-section" id="settingsSection">
+                <h2>Settings</h2>
+                <div class="settings-content">
+                    <div class="setting-item">
+                        <label><input type="checkbox" id="notificationsToggle"> Enable Notifications</label>
+                    </div>
+                    <div class="setting-item">
+                        <label>Theme Color:
+                            <input type="color" id="themeColorPicker" value="#6a11cb">
+                        </label>
+                    </div>
+                    <button onclick="saveSettings()">Save Settings</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Font Awesome for Icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <!-- FullCalendar JS -->
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales-all.min.js'></script>
+    <!-- Your Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
